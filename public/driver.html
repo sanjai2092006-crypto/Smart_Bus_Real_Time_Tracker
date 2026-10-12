@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBus Driver</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>🚌 SmartBus Driver</h1>
+      <p>Send live GPS location</p>
+    </div>
+    <a href="/" class="driver-link">Passenger Mode</a>
+  </header>
+
+  <main class="driver-page">
+    <div class="driver-card">
+      <h2>Driver Tracking</h2>
+
+      <label for="busSelect">Select Bus</label>
+      <select id="busSelect">
+        <option value="TN-72-AB-1234">BUS 101</option>
+        <option value="TN-72-CD-5678">BUS 102</option>
+        <option value="TN-72-EF-9012">BUS 103</option>
+      </select>
+
+      <button id="startBtn">▶ Start Live Tracking</button>
+      <button id="stopBtn" class="secondary">■ Stop Tracking</button>
+
+      <div id="driverStatus" class="driver-status">Tracking not started.</div>
+
+      <div class="gps-data">
+        <div>Latitude: <strong id="lat">--</strong></div>
+        <div>Longitude: <strong id="lng">--</strong></div>
+        <div>Speed: <strong id="driverSpeed">--</strong></div>
+      </div>
+
+      <p class="note">
+        For the hackathon, open this page on the driver's phone and allow location permission.
+      </p>
+    </div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="driver.js"></script>
+</body>
+</html>

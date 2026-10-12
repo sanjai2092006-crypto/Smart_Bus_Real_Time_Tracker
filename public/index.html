@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartBus - Real-Time Bus Tracking</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>🚌 SmartBus</h1>
+      <p>Real-time public bus tracking</p>
+    </div>
+    <a href="/driver.html" class="driver-link">Driver Mode</a>
+  </header>
+
+  <main>
+    <section id="searchPage" class="page">
+      <div class="hero">
+        <span class="badge">LIVE TRANSPORT</span>
+        <h2>Find a bus near you</h2>
+        <p>Search your route and see nearby live buses.</p>
+
+        <div class="search-card">
+          <label for="fromSelect">From</label>
+          <select id="fromSelect"></select>
+
+          <label for="toSelect">To</label>
+          <select id="toSelect"></select>
+
+          <button id="searchBtn">🔍 Search Buses</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultsPage" class="page hidden">
+      <div class="section-head">
+        <div>
+          <button id="backBtn" class="back">← Back</button>
+          <h2 id="routeTitle">Buses</h2>
+          <p id="locationStatus">Finding your location...</p>
+        </div>
+      </div>
+
+      <div id="busList" class="bus-list"></div>
+      <div id="noBuses" class="empty hidden">
+        No live buses were found for this route near your location.
+      </div>
+    </section>
+
+    <section id="trackingPage" class="page hidden">
+      <div class="track-head">
+        <button id="trackBackBtn" class="back">← Buses</button>
+        <div>
+          <h2 id="trackBusName">Bus</h2>
+          <p id="trackRoute">Route</p>
+        </div>
+      </div>
+
+      <div id="map"></div>
+
+      <div class="bottom-sheet">
+        <div class="live-row">
+          <span class="live-dot"></span>
+          <strong id="liveStatus">LIVE</strong>
+          <span id="updatedText">Updating...</span>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span>ETA</span>
+            <strong id="eta">--</strong>
+          </div>
+          <div class="stat">
+            <span>Speed</span>
+            <strong id="speed">--</strong>
+          </div>
+          <div class="stat">
+            <span>Next Stop</span>
+            <strong id="nextStop">--</strong>
+          </div>
+        </div>
+
+        <div class="route-box">
+          <span>🛣️ Bus Route</span>
+          <strong id="routeText">--</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
